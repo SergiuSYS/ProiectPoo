@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProiectPoo.WinForms
 {
-    public partial class login : Form
+    public partial class entrypage : Form
     {
-        public login()
+        public entrypage()
         {
             InitializeComponent();
         }
@@ -22,21 +22,18 @@ namespace ProiectPoo.WinForms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void login_Click(object sender, EventArgs e)
         {
-
+            login login = new login();
+            login.Show();
+            this.Hide();
         }
 
-        private void returnbutton_Click(object sender, EventArgs e)
+        private void createaccount_Click(object sender, EventArgs e)
         {
-            this.Close();
-            entrypage back = new entrypage();
-            back.Show();
-        }
-
-        private void username_TextChanged(object sender, EventArgs e)
-        {
-
+            CreateAccount createaccount = new CreateAccount();
+            createaccount.Show();
+            this.Hide();
         }
     }
 }

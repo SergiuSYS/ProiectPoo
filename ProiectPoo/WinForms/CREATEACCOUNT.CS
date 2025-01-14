@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace ProiectPoo.WinForms
 {
-    public partial class CREATEACCOUNT : UserControl
+    public partial class CreateAccount : Form
     {
-        public CREATEACCOUNT()
+        public CreateAccount()
         {
             InitializeComponent();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void returnbutton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            entrypage back = new entrypage();
+            back.Show();
         }
     }
 }
