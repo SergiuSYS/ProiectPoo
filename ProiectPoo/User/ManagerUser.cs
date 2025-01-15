@@ -9,7 +9,7 @@ public class ManagerUser
 
     public ManagerUser()
     {
-        LoadUserFromJson();
+        LoadUsersFromJson();
         userIdCounter = updateUserIdCounter();
     }
     private int updateUserIdCounter()
@@ -54,7 +54,7 @@ public class ManagerUser
 
     public void ModifyAccount(int userId, string newUserName, string newPassword)
     {
-        var user = uerList.Find(u => u.ID == userId);
+        var user = userList.Find(u => u.ID == userId);
         if (user != null)
         {
             user.UserName = newUserName;
@@ -75,7 +75,7 @@ public class ManagerUser
     public void LoadUsersFromJson()
     {
         string jsonString = File.ReadAllText("users.json");
-        userList = JsonSerializer.Deserialize<userList<User>>(jsonString);
+        userList = JsonSerializer.Deserialize<List<User>>(jsonString);
     }
     public void SaveDataToJson()
     {
@@ -83,7 +83,7 @@ public class ManagerUser
         {
             WriteIndented = true
         };
-        strong jsonString = JsonSerializer(userList, options);
+        string jsonString = JsonSerializer.Serialize(userList, options);
         File.WriteAllText("users.json", jsonString);
     }
 

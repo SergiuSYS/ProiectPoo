@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sergi\\Desktop\\ProiectPoo\\ProiectPoo\\ProiectPoo.csproj",
+      "projectUniqueName": "C:\\Users\\sergi\\Desktop\\proiect\\ProiectPoo\\ProiectPoo.csproj",
       "projectName": "ProiectPoo",
-      "projectPath": "C:\\Users\\sergi\\Desktop\\ProiectPoo\\ProiectPoo\\ProiectPoo.csproj",
+      "projectPath": "C:\\Users\\sergi\\Desktop\\proiect\\ProiectPoo\\ProiectPoo.csproj",
       "packagesPath": "C:\\Users\\sergi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sergi\\Desktop\\ProiectPoo\\ProiectPoo\\obj\\",
+      "outputPath": "C:\\Users\\sergi\\Desktop\\proiect\\ProiectPoo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
