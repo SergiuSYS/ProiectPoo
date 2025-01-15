@@ -2,7 +2,7 @@
 using System.Diagnostics.Metrics;
 using System.Text.Json;
 
-class ManagerUser
+public class ManagerUser
 {
     private List<User> userList = new List<User>();
     private int userIdCounter;
@@ -85,5 +85,10 @@ class ManagerUser
         };
         strong jsonString = JsonSerializer(userList, options);
         File.WriteAllText("users.json", jsonString);
+    }
+
+    public UserGetAccount(string user)
+    {
+        return userList.Find(u => u.UserName == user);
     }
 }
