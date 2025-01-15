@@ -1,14 +1,29 @@
 ﻿
+using System.Diagnostics.Metrics;
+using System.Text.Json;
+
 class ManagerUser
 {
     private List<User> userList = new List<User>();
-    private int userIdCounter = 1;
+    private int userIdCounter;
+
+    public ManagerUser()
+    {
+        LoadUserFromJson();
+        userIdCounter = updateUserIdCounter();
+    }
+    private int updateUserIdCounter()
+    {
+        if (userList.Count == 0)
+            return 0;
+        var temp=userList.Count;
+        return userList[temp - 1].ID + 1;
+    }
 
     public void Register(string userName, string password)
     {
         User newUser = new User(userIdCounter++, userName, password);
         userList.Add(newUser);
-        Console.Writeline($"User'{userName}' registered successfully'.");
     }
     public bool Login(string userName, string password)
     {
@@ -16,33 +31,24 @@ class ManagerUser
         {
             if (user.UserName == userName && user.Password == password)
             {
-                Console.Writeline($"Login successful for user '{userName}'.");
                 return true;
             }
         }
-        Console.WriteLine("Invalide username or password.");
         return false;
     }
 
-    public void AddAccount(string userName, string password, boll isAdmin)
+    public void AddAccount(string userName, string password)
     {
-        User newUser = new User(userIdCounter++, userName, password, isAdmin);
+        User newUser = new User(userIdCounter++, userName, password);
         userList.Add(newUser);
-        Console.WriteLine($"Admin added user '{userName}' successfully.");
     }
 
     public void DeleteAccount(int userId)
     {
-        var user = uerList.Find(u => u.ID == userId);
+        var user = userList.Find(u => u.ID == userId);
         if (user != null)
-        {
-            ClearPendingOrders(userId);
+        { 
             userList.Remove(user);
-            Console.WriteLine($"User '{user.UserName}' deleted successfully.");
-        }
-        else
-        {
-            Console.WriteLine("User not found.");
         }
     }
 
@@ -53,16 +59,31 @@ class ManagerUser
         {
             user.UserName = newUserName;
             user.Password = newPassword;
-            Console.WriteLine($"User '{userId}' updated successfully.");
-        }
-        else
-        {
-            Console.WriteLine("User not found.");
         }
     }
 
-    private void ClearPendingOrders(int userId)
+    public bool UserExsist(string username)
     {
-        Console.WriteLine($"Clearing pending orders for user ID: {userId}...");
+        foreach(var user in userList)
+        {
+            if (user.UserName == username)
+                return true;
+        }
+        return false;
+    }
+
+    public void LoadUsersFromJson()
+    {
+        string jsonString = File.ReadAllText("users.json");
+        userList = JsonSerializer.Deserialize<userList<User>>(jsonString);
+    }
+    public void SaveDataToJson()
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+        strong jsonString = JsonSerializer(userList, options);
+        File.WriteAllText("users.json", jsonString);
     }
 }

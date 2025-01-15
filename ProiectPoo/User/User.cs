@@ -5,7 +5,7 @@
     public string Password { get; set; }
     public bool IsAdmin { get; set; } = false;
 
-    public User(int id, string userName, string password, bool isAdmin = false)
+    public User(int id, string userName, string password)
     {
         ID = id;
         UserName = userName;
