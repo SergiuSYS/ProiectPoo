@@ -87,7 +87,7 @@ public class ManagerUser
         File.WriteAllText("users.json", jsonString);
     }
 
-    public UserGetAccount(string user)
+    public User GetAccount(string user)
     {
         return userList.Find(u => u.UserName == user);
     }
